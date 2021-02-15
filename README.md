@@ -1,1 +1,1 @@
-# wanplac-panel-react
+# wanplac-panel
