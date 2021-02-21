@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # .idea folder project
-./backend/.idea
-./frontend/.idea
+backend/.idea
+frontend/.idea
