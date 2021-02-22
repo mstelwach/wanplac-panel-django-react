@@ -1,4 +1,4 @@
-import {CREATE_RESERVATION, GET_ERRORS, GET_RESERVATIONS} from "./types";
+import {CREATE_RESERVATION, GET_RESERVATIONS} from "./types";
 import axios from "axios";
 import {createMessage, returnErrors} from "./messages";
 

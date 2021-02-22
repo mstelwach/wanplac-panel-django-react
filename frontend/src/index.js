@@ -6,7 +6,7 @@ import App from "./Components/App/App";
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./assets/css/paper-kit.css";
+import 'paper-kit-react/src/assets/css/paper-kit.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 
