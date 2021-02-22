@@ -16,21 +16,11 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-
 from backend import settings
-from reservation.views import ReservationView, KayakView, RouteView, KayakStockDateView, ReservedKayakView
-
-router = routers.DefaultRouter()
-router.register(r'reservations', ReservationView, 'reservation')
-router.register(r'kayaks', KayakView, 'kayak')
-router.register(r'routes', RouteView, 'route')
-router.register(r'kayak-stock-date', KayakStockDateView, 'stock-date')
-router.register(r'reserved-kayak', ReservedKayakView, 'reserved-kayak')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include('account.urls')),
-    path('api/', include(router.urls)),
+    path('api/', include('reservation.urls')),
+    path('api/auth/', include('account.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

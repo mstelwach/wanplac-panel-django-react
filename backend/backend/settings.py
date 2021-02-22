@@ -26,7 +26,7 @@ SECRET_KEY = '@f0wsc+#92bc%*=ttj@r5!p3-pu30-6$e=f%h&s2n5l%55_f&n'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+APPEND_SLASH = False
 
 # Application definition
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_filters',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -110,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'account.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -147,3 +148,10 @@ CORS_ORIGIN_WHITELIST = (
      'http://localhost:3000',
 )
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+# REST FRAMEWORK SETTINGS
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication', )
+}

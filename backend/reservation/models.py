@@ -69,7 +69,7 @@ class Reservation(models.Model):
     phone = models.CharField(max_length=17)
     date = models.DateField()
     time = models.TimeField()
-    account = models.ForeignKey(User, on_delete=models.CASCADE)
+    account = models.ForeignKey(User, related_name='reservations', on_delete=models.CASCADE)
     route = models.ForeignKey(Route, on_delete=models.CASCADE)
     kayaks = models.ManyToManyField(Kayak, through='ReservedKayak')
     # status = models.CharField(max_length=32, choices=STATUS_BOOKING, default='unconfirmed')

@@ -1,4 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
 
 from reservation.models import Reservation, Kayak, Route, KayakStockDate, ReservedKayak
@@ -25,9 +26,18 @@ class RouteView(ModelViewSet):
 
 class ReservationView(ModelViewSet):
     serializer_class = ReservationSerializer
-    queryset = Reservation.objects.all()
+    # queryset = Reservation.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
     filter_backends = (DjangoFilterBackend, )
     filterset_fields = ['date']
+
+    def get_queryset(self):
+        return self.queryset.filter(account=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(account=self.request.user)
 
 
 class ReservedKayakView(ModelViewSet):
